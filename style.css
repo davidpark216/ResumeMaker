@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#test {
+  font-size: 100px;
+}
+
+#information {
+  display: grid;
+  grid-template-columns: 100px auto;
+  background-color: #9e9d9d;
+  width: 60vw;
+  height: auto;
+  padding: 10px;
+}
+
+#certification {
+  margin-top: 10px;
+  background-color: #9e9d9d;
+  width: 60vw;
+  height: auto;
+  padding: 10px;
+}
+
+#introdution {
+  margin-top: 10px;
+  background-color: #9e9d9d;
+  width: 60vw;
+  height: auto;
+  padding: 10px;
+}
+
+#textArea {
+  display: grid;
+  grid-template-columns: 100px auto;
+}
+
+.head,
+.inputSpace {
+  margin-bottom: 10px;
+}

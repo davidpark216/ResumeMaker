@@ -1,9 +1,9 @@
 body {
   margin: 0;
-  padding: 0;
+  padding-left: 10px;
 }
 
-#test {
+#mainHead {
   font-size: 100px;
 }
 
@@ -16,15 +16,9 @@ body {
   padding: 10px;
 }
 
-#certification {
-  margin-top: 10px;
-  background-color: #9e9d9d;
-  width: 60vw;
-  height: auto;
-  padding: 10px;
-}
-
-#introdution {
+#certification,
+#introdution,
+#interview {
   margin-top: 10px;
   background-color: #9e9d9d;
   width: 60vw;
@@ -39,5 +33,25 @@ body {
 
 .head,
 .inputSpace {
+  margin-bottom: 10px;
+}
+
+#certifiAdd,
+#introAdd,
+#interviewAdd {
+  float: right;
+  margin-right: 10px;
+}
+
+.certifiText,
+.introText,
+.interviewText {
+  width: 50vw;
+  height: 20vh;
+}
+
+.certifiContent,
+.introContent,
+.interviewContent {
   margin-bottom: 10px;
 }

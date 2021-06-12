@@ -9,11 +9,32 @@ body {
 
 #information {
   display: grid;
-  grid-template-columns: 100px auto;
+  grid-template-columns: 200px auto;
   background-color: #9e9d9d;
   width: 60vw;
   height: auto;
   padding: 10px;
+}
+
+#pictureArea {
+  text-align: -webkit-center;
+}
+#real-input {
+  display: none;
+}
+
+#imagePreview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+#photo {
+  resize: both;
+  width: 100px;
+  height: 100px;
 }
 
 #certification,
@@ -48,6 +69,7 @@ body {
 .interviewText {
   width: 50vw;
   height: 20vh;
+  resize: none;
 }
 
 .certifiContent,

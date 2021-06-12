@@ -3,13 +3,28 @@
     <meta charset="UTF-8" />
     <title>이력서 편집기</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
   </head>
   <body>
     <div id="resumeWrap">
       <div id="mainHead">ResumeMaker</div>
       <div id="content">
         <div id="information">
-          <div id="pictureArea">여기는 사진</div>
+          <div id="pictureArea">
+            <div id="imagePreview"></div>
+            <input
+              type="file"
+              id="real-input"
+              class="image_inputType_file"
+              accept="img/*"
+              required
+              multiple
+            />
+            <button class="browse-btn">사진 등록</button>
+          </div>
           <div id="textArea">
             <div id="textHead">
               <div class="head">이름 :</div>

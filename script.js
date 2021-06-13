@@ -8,11 +8,24 @@ let certifiNumber = 0;
 let introNumber = 0;
 let interviewNumber = 0;
 
-const textCount = () => {
-  document.querySelector(".count").innerHTML = document.querySelector(
-    ".certifiText"
+const textCertifiCount = (number) => {
+  document.querySelector(
+    ".certifiCount" + "_" + number
+  ).innerHTML = document.querySelector(".certifi" + "_" + number).value.length;
+};
+
+const textIntroCount = (number) => {
+  document.querySelector(
+    ".introCount" + "_" + number
+  ).innerHTML = document.querySelector(".intro" + "_" + number).value.length;
+};
+
+const textInterviewCount = (number) => {
+  document.querySelector(
+    ".interviewCount" + "_" + number
+  ).innerHTML = document.querySelector(
+    ".interview" + "_" + number
   ).value.length;
-  console.log(document.querySelector(".certifiText").value.length);
 };
 
 const handleAddCertifi = () => {
@@ -24,8 +37,8 @@ const handleAddCertifi = () => {
      <span>. </span>
       <input type="text"/>
      </div>
-      <textarea class="certifiText" onkeyup="textCount()" ></textarea>
-      <div class="count">0</div>
+      <textarea class="certifiText certifi_${certifiNumber}" onkeyup="textCertifiCount(${certifiNumber})"></textarea>
+      <div class="certifiCount_${certifiNumber}">0</div>
   `;
   div.classList.add("certifiContent");
   certifiContents.appendChild(div);
@@ -40,9 +53,9 @@ const handleAddIntro = () => {
      <span>. </span>
       <input type="text"/>
      </div>
-      <textarea class="introText" >
+      <textarea class="introText intro_${introNumber}" onkeyup="textIntroCount(${introNumber})">
       </textarea>
-      <div class="count">0</div>
+      <div class="introCount_${introNumber}">0</div>
       
   `;
   div.classList.add("introContent");
@@ -58,8 +71,8 @@ const handleAddInterview = () => {
      <span>. </span>
       <input type="text"/>
      </div>
-      <input type="textarea" class="interviewText"/>
-      <div class="count">0</div>
+      <input type="textarea" class="interviewText interview_${interviewNumber}" onkeyup="textInterviewCount(${interviewNumber})"/>
+      <div class="interviewCount_${interviewNumber}">0</div>
   `;
   div.classList.add("interviewContent");
   interviewContents.appendChild(div);

@@ -1,15 +1,31 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>이력서 편집기</title>
+    <title>Resume Maker</title>
     <link rel="stylesheet" href="style.css" />
+    <script
+      type="text/javascript"
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+    ></script>
   </head>
   <body>
     <div id="resumeWrap">
-      <div id="test">hello Resume</div>
+      <div id="mainHead">ResumeMaker</div>
+      <button id="print" onclick="printPage()">프린트</button>
       <div id="content">
         <div id="information">
-          <div id="pictureArea">여기는 사진</div>
+          <div id="pictureArea">
+            <div id="imagePreview"></div>
+            <input
+              type="file"
+              id="real-input"
+              class="image_inputType_file"
+              accept="img/*"
+              required
+              multiple
+            />
+            <button id="browse-btn">사진 등록</button>
+          </div>
           <div id="textArea">
             <div id="textHead">
               <div class="head">이름 :</div>
@@ -30,13 +46,37 @@
           </div>
         </div>
       </div>
+      <div id="career">
+        <div class="addHead">
+          <span class="listHead">경력사항</span>
+          <button class="addButton" onclick="handleAddCareer()">+ 추가</button>
+        </div>
+        <div id="careerContents"></div>
+      </div>
       <div id="certification">
-        <span>자격증</span>
-        <button>+ 추가</button>
+        <div class="addHead">
+          <span class="listHead">자격증</span>
+          <button class="addButton" onclick="handleAddCertifi();">
+            + 추가
+          </button>
+        </div>
+        <div id="certifiContents"></div>
       </div>
       <div id="introdution">
-        <span>자기소개서</span>
-        <button>+ 추가</button>
+        <div class="addHead">
+          <span class="listHead">자기소개서</span>
+          <button class="addButton" onclick="handleAddIntro()">+ 추가</button>
+        </div>
+        <div id="introContents"></div>
+      </div>
+      <div id="interview">
+        <div class="addHead">
+          <span class="listHead">면접질문</span>
+          <button class="addButton" onclick="handleAddInterview()">
+            + 추가
+          </button>
+        </div>
+        <div id="interviewContents"></div>
       </div>
     </div>
     <script src="script.js"></script>

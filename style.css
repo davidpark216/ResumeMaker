@@ -7,6 +7,13 @@ body {
   font-size: 100px;
 }
 
+#print {
+  position: absolute;
+  top: 10;
+  right: 0;
+  width: 100px;
+}
+
 #information {
   display: grid;
   grid-template-columns: 200px auto;
@@ -36,7 +43,7 @@ body {
   width: 100px;
   height: 100px;
 }
-
+#career,
 #certification,
 #introdution,
 #interview {
@@ -56,10 +63,7 @@ body {
 .inputSpace {
   margin-bottom: 10px;
 }
-
-#certifiAdd,
-#introAdd,
-#interviewAdd {
+.addButton {
   float: right;
   margin-right: 10px;
 }
@@ -75,5 +79,12 @@ body {
 .certifiContent,
 .introContent,
 .interviewContent {
+  margin-bottom: 10px;
+}
+
+.careerArea,
+.certifiArea,
+.introArea,
+.interview {
   margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>이력서 편집기</title>
+    <title>Resume Maker</title>
     <link rel="stylesheet" href="style.css" />
     <script
       type="text/javascript"
@@ -11,6 +11,7 @@
   <body>
     <div id="resumeWrap">
       <div id="mainHead">ResumeMaker</div>
+      <button id="print" onclick="printPage()">프린트</button>
       <div id="content">
         <div id="information">
           <div id="pictureArea">
@@ -23,7 +24,7 @@
               required
               multiple
             />
-            <button class="browse-btn">사진 등록</button>
+            <button id="browse-btn">사진 등록</button>
           </div>
           <div id="textArea">
             <div id="textHead">
@@ -45,24 +46,33 @@
           </div>
         </div>
       </div>
+      <div id="career">
+        <div class="addHead">
+          <span class="listHead">경력사항</span>
+          <button class="addButton" onclick="handleAddCareer()">+ 추가</button>
+        </div>
+        <div id="careerContents"></div>
+      </div>
       <div id="certification">
         <div class="addHead">
-          <span>자격증</span>
-          <button id="certifiAdd" onclick="handleAddCertifi();">+ 추가</button>
+          <span class="listHead">자격증</span>
+          <button class="addButton" onclick="handleAddCertifi();">
+            + 추가
+          </button>
         </div>
         <div id="certifiContents"></div>
       </div>
       <div id="introdution">
         <div class="addHead">
-          <span>자기소개서</span>
-          <button id="introAdd" onclick="handleAddIntro()">+ 추가</button>
+          <span class="listHead">자기소개서</span>
+          <button class="addButton" onclick="handleAddIntro()">+ 추가</button>
         </div>
         <div id="introContents"></div>
       </div>
       <div id="interview">
         <div class="addHead">
-          <span>면접질문</span>
-          <button id="interviewAdd" onclick="handleAddInterview()">
+          <span class="listHead">면접질문</span>
+          <button class="addButton" onclick="handleAddInterview()">
             + 추가
           </button>
         </div>

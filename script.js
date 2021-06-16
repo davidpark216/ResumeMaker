@@ -1,18 +1,14 @@
+const careerContents = document.querySelector("#careerContents");
 const certifiContents = document.querySelector("#certifiContents");
 const introContents = document.querySelector("#introContents");
 const interviewContents = document.querySelector("#interviewContents");
-const browseBtn = document.querySelector(".browse-btn");
+const browseBtn = document.querySelector("#browse-btn");
 const realInput = document.querySelector("#real-input");
 
+let careerNumber = 0;
 let certifiNumber = 0;
 let introNumber = 0;
 let interviewNumber = 0;
-
-const textCertifiCount = (number) => {
-  document.querySelector(
-    ".certifiCount" + "_" + number
-  ).innerHTML = document.querySelector(".certifi" + "_" + number).value.length;
-};
 
 const textIntroCount = (number) => {
   document.querySelector(
@@ -28,19 +24,54 @@ const textInterviewCount = (number) => {
   ).value.length;
 };
 
+const deleteCareerList = (className) => {
+  document.querySelector(`.careerArea_${className}`).innerHTML = "";
+};
+
+const deleteCertifiList = (className) => {
+  document.querySelector(`.certifiArea_${className}`).innerHTML = "";
+};
+
+const deleteIntroList = (className) => {
+  document.querySelector(`.introArea_${className}`).innerHTML = "";
+};
+
+const deleteInterviewList = (className) => {
+  document.querySelector(`.interviewArea_${className}`).innerHTML = "";
+};
+
+const handleAddCareer = () => {
+  let div = document.createElement("div");
+  careerNumber += 1;
+  div.innerHTML = `
+     <div class="careerHead">
+      <input class="certifiHead_text" type="text" placeholder="제목"/>
+     </div>
+     <textarea class="certifiText certifi_${careerNumber}"></textarea>
+     <div>
+     <button onclick="deleteCareerList(${careerNumber})">삭제</button>
+     </div>
+  `;
+  div.classList.add("careerArea");
+  div.classList.add(`careerArea_${careerNumber}`);
+  careerContents.appendChild(div);
+};
+
 const handleAddCertifi = () => {
   let div = document.createElement("div");
   certifiNumber += 1;
   div.innerHTML = `
-     <div>
-     <span class="certifiNumber">${certifiNumber}</span>
-     <span>. </span>
-      <input type="text"/>
+  
+     <div class="certifiHead">
+      <input class="certifiHead_text" type="text" placeholder="제목"/>
      </div>
-      <textarea class="certifiText certifi_${certifiNumber}" onkeyup="textCertifiCount(${certifiNumber})"></textarea>
-      <div class="certifiCount_${certifiNumber}">0</div>
+      <textarea class="certifiText certifi_${certifiNumber}"></textarea>
+      <div>
+      <button onclick="deleteCertifiList(${certifiNumber})">삭제</button>
+      </div>
   `;
-  div.classList.add("certifiContent");
+  div.classList.add("certifiArea");
+  div.classList.add(`certifiArea_${certifiNumber}`);
   certifiContents.appendChild(div);
 };
 
@@ -49,16 +80,16 @@ const handleAddIntro = () => {
   introNumber += 1;
   div.innerHTML = `
      <div>
-     <span class="certifiNumber">${introNumber}</span>
-     <span>. </span>
-      <input type="text"/>
+      <input class="introHead_text" type="text" placeholder="제목"/>
      </div>
       <textarea class="introText intro_${introNumber}" onkeyup="textIntroCount(${introNumber})">
       </textarea>
       <div class="introCount_${introNumber}">0</div>
+      <button onclick="deleteIntroList(${introNumber})">삭제</button>
       
   `;
-  div.classList.add("introContent");
+  div.classList.add("introArea");
+  div.classList.add(`introArea_${introNumber}`);
   introContents.appendChild(div);
 };
 
@@ -67,14 +98,14 @@ const handleAddInterview = () => {
   interviewNumber += 1;
   div.innerHTML = `
      <div>
-     <span class="interviewNumber">${interviewNumber}</span>
-     <span>. </span>
-      <input type="text"/>
+      <input class="interviewHead_text" type="text" placeholder="제목"/>
      </div>
       <input type="textarea" class="interviewText interview_${interviewNumber}" onkeyup="textInterviewCount(${interviewNumber})"/>
       <div class="interviewCount_${interviewNumber}">0</div>
+      <button onclick="deleteInterviewList(${interviewNumber})">삭제</button>
   `;
-  div.classList.add("interviewContent");
+  div.classList.add("interviewArea");
+  div.classList.add(`interviewArea_${interviewNumber}`);
   interviewContents.appendChild(div);
 };
 
@@ -114,3 +145,34 @@ function readInputFile(e) {
 }
 
 $("#real-input").on("change", readInputFile);
+
+let printDiv;
+let initBody;
+let hiddenPhotoBtn;
+let hiddenButton;
+function printPage() {
+  initbody = document.body;
+  hiddenPhotoBtn = document.querySelector("#browse-btn");
+  hiddenButton = document.querySelectorAll(".addButton");
+  window.onbeforeprint = beforePrint;
+  window.onafterprint = afterPrint;
+  setTimeout(function () {
+    window.print();
+  }, 500);
+}
+
+function beforePrint() {
+  for (let el of hiddenButton) {
+    el.style.display = "none";
+  }
+  hiddenPhotoBtn.style.display = "none";
+  document.body = document.getElementById("resumeWrap").innerHTML;
+}
+
+function afterPrint() {
+  for (let el of hiddenButton) {
+    el.style.display = "block";
+  }
+  hiddenPhotoBtn.style.display = "block";
+  document.body = initBody;
+}

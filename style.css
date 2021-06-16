@@ -88,12 +88,3 @@ body {
 .interview {
   margin-bottom: 10px;
 }
-
-@media print {
-  #career,
-  #certification,
-  #introdution,
-  #interview {
-    background-color: #9e9d9d;
-  }
-}

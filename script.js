@@ -49,7 +49,7 @@ const handleAddCareer = () => {
      </div>
      <textarea class="certifiText certifi_${careerNumber}"></textarea>
      <div>
-     <button onclick="deleteCareerList(${careerNumber})">삭제</button>
+     <button class="deleteButton" onclick="deleteCareerList(${careerNumber})">삭제</button>
      </div>
   `;
   div.classList.add("careerArea");
@@ -67,7 +67,7 @@ const handleAddCertifi = () => {
      </div>
       <textarea class="certifiText certifi_${certifiNumber}"></textarea>
       <div>
-      <button onclick="deleteCertifiList(${certifiNumber})">삭제</button>
+      <button class="deleteButton" onclick="deleteCertifiList(${certifiNumber})">삭제</button>
       </div>
   `;
   div.classList.add("certifiArea");
@@ -85,7 +85,7 @@ const handleAddIntro = () => {
       <textarea class="introText intro_${introNumber}" onkeyup="textIntroCount(${introNumber})">
       </textarea>
       <div class="introCount_${introNumber}">0</div>
-      <button onclick="deleteIntroList(${introNumber})">삭제</button>
+      <button class="deleteButton" onclick="deleteIntroList(${introNumber})">삭제</button>
       
   `;
   div.classList.add("introArea");
@@ -100,9 +100,9 @@ const handleAddInterview = () => {
      <div>
       <input class="interviewHead_text" type="text" placeholder="제목"/>
      </div>
-      <input type="textarea" class="interviewText interview_${interviewNumber}" onkeyup="textInterviewCount(${interviewNumber})"/>
+      <textarea class="interviewText interview_${interviewNumber}" onkeyup="textInterviewCount(${interviewNumber})"></textarea>
       <div class="interviewCount_${interviewNumber}">0</div>
-      <button onclick="deleteInterviewList(${interviewNumber})">삭제</button>
+      <button class="deleteButton" onclick="deleteInterviewList(${interviewNumber})">삭제</button>
   `;
   div.classList.add("interviewArea");
   div.classList.add(`interviewArea_${interviewNumber}`);
@@ -144,16 +144,20 @@ function readInputFile(e) {
   }
 }
 
-$("#real-input").on("change", readInputFile);
+realInput.addEventListener("change", readInputFile);
 
 let printDiv;
 let initBody;
 let hiddenPhotoBtn;
-let hiddenButton;
+let hiddenAddButton;
+let hiddenDeleteButton;
+let hiddenPrintButton;
 function printPage() {
   initbody = document.body;
   hiddenPhotoBtn = document.querySelector("#browse-btn");
-  hiddenButton = document.querySelectorAll(".addButton");
+  hiddenAddButton = document.querySelectorAll(".addButton");
+  hiddenDeleteButton = document.querySelectorAll(".deleteButton");
+  hiddenPrintButton = document.querySelector("#print");
   window.onbeforeprint = beforePrint;
   window.onafterprint = afterPrint;
   setTimeout(function () {
@@ -162,17 +166,25 @@ function printPage() {
 }
 
 function beforePrint() {
-  for (let el of hiddenButton) {
+  for (let el of hiddenAddButton) {
+    el.style.display = "none";
+  }
+  for (let el of hiddenDeleteButton) {
     el.style.display = "none";
   }
   hiddenPhotoBtn.style.display = "none";
+  hiddenPrintButton.style.display = "none";
   document.body = document.getElementById("resumeWrap").innerHTML;
 }
 
 function afterPrint() {
-  for (let el of hiddenButton) {
+  for (let el of hiddenAddButton) {
+    el.style.display = "block";
+  }
+  for (let el of hiddenDeleteButton) {
     el.style.display = "block";
   }
   hiddenPhotoBtn.style.display = "block";
+  hiddenPrintButton.style.display = "block";
   document.body = initBody;
 }

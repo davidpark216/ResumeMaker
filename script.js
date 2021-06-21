@@ -47,6 +47,11 @@ const handleAddCareer = () => {
      <div class="careerHead">
       <input class="certifiHead_text" type="text" placeholder="제목"/>
      </div>
+     <div class="careerDate">
+      <input class="careerStart_${careerNumber}" type="text" placeholder= "재직기간"></input>
+      <span> ~ </span>
+      <input class="careerEnd_${careerNumber}" type="text"></input>
+      </div>
      <textarea class="certifiText certifi_${careerNumber}"></textarea>
      <div>
      <button class="deleteButton" onclick="deleteCareerList(${careerNumber})">삭제</button>
@@ -64,6 +69,9 @@ const handleAddCertifi = () => {
   
      <div class="certifiHead">
       <input class="certifiHead_text" type="text" placeholder="제목"/>
+     </div>
+     <div class="certifiDate">
+     <input type="text" placeholder="취득일"></input>
      </div>
       <textarea class="certifiText certifi_${certifiNumber}"></textarea>
       <div>

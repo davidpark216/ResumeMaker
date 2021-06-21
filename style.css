@@ -3,6 +3,10 @@ body {
   padding-left: 10px;
   background: rgba(233, 228, 233, 0.788);
 }
+input,
+textarea {
+  margin-bottom: 10px;
+}
 
 #mainHead {
   font-size: 100px;
@@ -64,9 +68,8 @@ body {
   grid-template-columns: 100px auto;
 }
 
-.head,
-.inputSpace {
-  margin-bottom: 10px;
+.head {
+  margin-bottom: 14px;
 }
 .addButton {
   float: right;
